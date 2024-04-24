@@ -10,6 +10,9 @@ try {
     const status = await mndrive.get_account_status();
     console.log('status',status)
 
+    const license = await mndrive.get_license('V112298685904');
+    console.log('license',license)
+
 } catch (error) {
     console.error(error.message)
 }
