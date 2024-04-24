@@ -59,4 +59,32 @@ export class MnDrive {
     
     }
 
+  get_license = async (
+    license: string
+  ) => {
+    
+    const url = `${this.base_uri}/Services/RecordRequest/v1/Search`;
+    console.log("url", url);
+    
+    return await fetch(url, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          Authorization: this.authorization,
+          'Content-Type': "application/json",
+        },
+        body: JSON.stringify({
+          "dln": `${license}`,
+        }),
+    })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`${response.statusText} [${response.status}]`);
+      }
+      return response.json();
+    })
+    .then((data)=> data);
+
+  }
+  
 }
