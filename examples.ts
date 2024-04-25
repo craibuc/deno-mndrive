@@ -13,6 +13,13 @@ try {
     const license = await mndrive.get_license('V112298685904');
     console.log('license',license)
 
+    const new_password = mndrive.generate_password();
+    console.log('new_password',new_password);
+
+    // set the same password
+    const results = await mndrive.set_password(env.MNDRIVE_PASSWORD);
+    console.log('results',results)
+
 } catch (error) {
     console.error(error.message)
 }
